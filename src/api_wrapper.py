@@ -22,7 +22,7 @@ class theOddsApi:
             response = requests.get(url, params=params)
             response.raise_for_status() # Raises an HTTPError if the HTTP request returned an unsuccessful status code
             
-            return response
+            return response.json()
         except HTTPError as http_err:
             status_code = http_err.response.status_code
 
@@ -145,7 +145,7 @@ class theOddsApi:
             'all': active_sports_flag
         }
         sports_response = self.make_request(request_url, data)
-        return sports_response.json()
+        return sports_response
     
     '''
         Returns the odds for a specified sport or upcoming events.
@@ -178,7 +178,7 @@ class theOddsApi:
         
         odds_response = self.make_request(request_url, params = params)
         if odds_response:
-            return odds_response.json()
+            return odds_response
         else:
             None
     
@@ -194,6 +194,6 @@ class theOddsApi:
 
         scores_response = self.make_request(request_url, params=params)
 
-        return scores_response.json()
+        return scores_response
 
     

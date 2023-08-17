@@ -1,4 +1,4 @@
-from src.api_wrapper import theOddsApi
+from api_wrapper import theOddsApi
 from dotenv import load_dotenv
 import os
 
